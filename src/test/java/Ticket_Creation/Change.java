@@ -7,7 +7,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.List;
 import java.util.Scanner;
@@ -70,7 +69,7 @@ public class Change {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locatorvalue)));
         System.out.println(element.getText());
-//        actions(element);
+        actions(element);
         element.click();
         System.out.println(element.getText());
         waituntilpageload();
@@ -186,10 +185,10 @@ public class Change {
     }
 
     public static void changett() throws InterruptedException {
-//        selectdropdownvalue("//select[@id='ChangerequesterGroup']", "Main Network Operation Center");
-//        selectdropdownvalue("//select[@id='ChangerequesterUser']", "nocuser1");
+        selectdropdownvalue("//select[@id='ChangerequesterGroup']", "Main Network Operation Center");
+        selectdropdownvalue("//select[@id='ChangerequesterUser']", "nocuser1");
         selectdropdownoption("//select[@id='ChangemodeOfRequest']", 1);
-        //selectdropdownvalue("//select[@id='ChangemodeOfRequest']", "Email");
+        selectdropdownvalue("//select[@id='ChangemodeOfRequest']", "Email");
         selectdropdownvalue("//select[@id='ChangeLocation']", "MUMBAI");
         enterkeys("//input[@id='ReportedTime']");
         selectdropdownvalue("//select[@id='ChangeClassification']", "Circuit Change");
@@ -197,9 +196,6 @@ public class Change {
         selectdropdownvalue("//div[@id='s2id_ChangeSubClassification']", "Group of Ciruits");
 
     }
-
-
-
 }
 
 
