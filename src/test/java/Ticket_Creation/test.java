@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Scanner;
 
 public class test {
@@ -17,7 +18,7 @@ public class test {
 
     public static void main(String[] args) throws InterruptedException {
         setup();
-        loginPage("https://192.168.4.96:10095/oss", "nocuser2", "nms@123$");
+        loginPage("https://192.168.4.96:10095/oss", "logeswaridk", "nms@123$");
         ttpage();
         changett();
     }
@@ -147,6 +148,31 @@ public class test {
         Thread.sleep(500);
     }
 
+//    public static void looping(String class_locatorvalue, String sub_class_locatorvalue) {
+    public static void looping() {
+        List<WebElement> dropdown = driver.findElements(By.xpath("//select[@id='ChangeClassification']"));
+        System.out.println("1st dd");
+        for (int i = 0; i <= dropdown.size(); i++) {
+            Select dd = new Select(dropdown.get(i));
+            if (!dd.getOptions().isEmpty()) {
+                dd.selectByIndex(i);
+            }
+            List<WebElement> scdropdown = driver.findElements(By.xpath("//select[@id='ChangeSubClassification']"));
+            for (int j = 0; j <= scdropdown.size(); j++) {
+                Select sc_dd = new Select(scdropdown.get(j));
+                if (!sc_dd.getOptions().isEmpty()) {
+                    sc_dd.selectByIndex(j);
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
     public static void ttpage() {
         elementToBeClickable("//div[@id='topmenubar']//li//a[@id='tt_menu_1']");
         elementToBeClickable("//div[@id='tt_menu_1_submenu']//li//a[text()='Open Tickets']");
@@ -162,10 +188,14 @@ public class test {
         selectByVisibleText("//select[@id='ChangemodeOfRequest']", "Email");
         selectByVisibleText("//select[@id='ChangeLocation']", "ABU TALAT");
         enterkeys("//input[@id='ReportedTime']");
-        selectByVisibleText("//select[@id='ChangeClassification']", "Circuit Change");
-        selectByIndex("//select[@id='ChangeSubClassification']", 1);
-        selectByIndex("//select[@id='AffectedParties']", 1);
-        selectByIndex("//select[@id='AffectedCircuitList']", 1);
+
+        looping();
+
+
+//        selectByVisibleText("//select[@id='ChangeClassification']", "Circuit Change");
+//        selectByIndex("//select[@id='ChangeSubClassification']", 1);
+//        selectByIndex("//select[@id='AffectedParties']", 1);
+//        selectByIndex("//select[@id='AffectedCircuitList']", 1);
         enterkeys("//input[@id='startTime1']");
         enterkeys("//input[@id='endTime1']");
         enterkeys("//input[@id='startTime2']");
@@ -186,7 +216,7 @@ public class test {
         elementToBeClickable("//div[@id='s2id_LinkedTicket']");
         sendkeys("//input[@id='s2id_autogen8_search']", "EIG-TT");
         elementToBeClickable("//ul[@class='select2-results']//li[1]/div");
-//        elementToBeClickable("//button[@id='Submit']");
+        elementToBeClickable("//button[@id='Submit']");
     }
 
 }
