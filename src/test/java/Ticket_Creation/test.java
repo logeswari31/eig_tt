@@ -151,7 +151,6 @@ public class test {
 //    public static void looping(String class_locatorvalue, String sub_class_locatorvalue) {
     public static void looping() {
         List<WebElement> dropdown = driver.findElements(By.xpath("//select[@id='ChangeClassification']"));
-        System.out.println("1st dd");
         for (int i = 0; i <= dropdown.size(); i++) {
             Select dd = new Select(dropdown.get(i));
             if (!dd.getOptions().isEmpty()) {
